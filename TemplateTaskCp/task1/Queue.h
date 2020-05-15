@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 using namespace std;
 
@@ -6,11 +6,11 @@ template<class T>
 class Queue
 {
 private:
-	int size; //размер очереди
-	int head, tail; //голова и хвост очереди
+	int size; //СЂР°Р·РјРµСЂ РѕС‡РµСЂРµРґРё
+	int head, tail; //РіРѕР»РѕРІР° Рё С…РІРѕСЃС‚ РѕС‡РµСЂРµРґРё
 	T* arr;
 public:
-	Queue(int item) //создание пустого экземпляра
+	Queue(int item) //СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР°
 	{
 		if (item >= 0)
 		{
@@ -21,7 +21,7 @@ public:
 		}
 		else throw "Error";
 	}
-	Queue(const Queue<T>& clone) //Копирование
+	Queue(const Queue<T>& clone) //РљРѕРїРёСЂРѕРІР°РЅРёРµ
 	{
 		this->size = clone.size;
 		this->head = clone.head;
@@ -30,32 +30,32 @@ public:
 		this->tail = clone.tail;
 	}
 	~Queue() { }
-	void Push(T item)//добавление
+	void Push(T item)//РґРѕР±Р°РІР»РµРЅРёРµ
 	{
-		if (this->tail >= this->size) throw "Error";//очередь заполнена
+		if (this->tail >= this->size) throw "Error";//РѕС‡РµСЂРµРґСЊ Р·Р°РїРѕР»РЅРµРЅР°
 		arr[this->tail++] = item;
 	}
-	T Pop()//изъятие
+	T Pop()//РёР·СЉСЏС‚РёРµ
 	{
-		if (this->head == this->tail) throw "Error";//очередь пуста
+		if (this->head == this->tail) throw "Error";//РѕС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°
 		return arr[head++];
 	}
-	void Print()//вывод очереди
+	void Print()//РІС‹РІРѕРґ РѕС‡РµСЂРµРґРё
 	{
 		for (int i = this->head; i < this->tail; ++i)
 			cout << this->arr[i] << " ";
 		cout << endl;
 	}
 
-	Queue(const Queue<T>& first,const Queue<T>& second)//объединение очередей в новую
+	Queue(const Queue<T>& first,const Queue<T>& second)//РѕР±СЉРµРґРёРЅРµРЅРёРµ РѕС‡РµСЂРµРґРµР№ РІ РЅРѕРІСѓСЋ
 	{
 		
 		size = first.size + second.size;
 		arr = new T[size];
 		head = tail = 0;
-		for (int i = first.head; i < first.tail; ++i)//1очередь
+		for (int i = first.head; i < first.tail; ++i)//1РѕС‡РµСЂРµРґСЊ
 			this->Push(first.arr[i]);
-		for (int i = second.head; i < second.tail; ++i)//2очередь
+		for (int i = second.head; i < second.tail; ++i)//2РѕС‡РµСЂРµРґСЊ
 			this->Push(second.arr[i]);
 	}
 };

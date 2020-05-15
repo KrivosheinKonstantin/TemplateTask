@@ -152,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="task1.rc" />
