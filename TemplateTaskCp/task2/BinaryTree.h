@@ -1,31 +1,31 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
 
-//Разработайте шаблонный класс бинарного дерева.
-//Реализуйте функции построения дерева, добавления новой вершины, удаления вершины, 
-//обхода вершин дерева, получения списка листьев, поиска по дереву.
+//Р Р°Р·СЂР°Р±РѕС‚Р°Р№С‚Рµ С€Р°Р±Р»РѕРЅРЅС‹Р№ РєР»Р°СЃСЃ Р±РёРЅР°СЂРЅРѕРіРѕ РґРµСЂРµРІР°.
+//Р РµР°Р»РёР·СѓР№С‚Рµ С„СѓРЅРєС†РёРё РїРѕСЃС‚СЂРѕРµРЅРёСЏ РґРµСЂРµРІР°, РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ РІРµСЂС€РёРЅС‹, СѓРґР°Р»РµРЅРёСЏ РІРµСЂС€РёРЅС‹, 
+//РѕР±С…РѕРґР° РІРµСЂС€РёРЅ РґРµСЂРµРІР°, РїРѕР»СѓС‡РµРЅРёСЏ СЃРїРёСЃРєР° Р»РёСЃС‚СЊРµРІ, РїРѕРёСЃРєР° РїРѕ РґРµСЂРµРІСѓ.
 
 template<class T>
 class BinaryTree
 {
 private:
 	struct Node {
-		T data; //значение узла
-		Node* left = nullptr; //указатель на левое звено
-		Node* right = nullptr; //указатель на правое звено
+		T data; //Р·РЅР°С‡РµРЅРёРµ СѓР·Р»Р°
+		Node* left = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р»РµРІРѕРµ Р·РІРµРЅРѕ
+		Node* right = nullptr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїСЂР°РІРѕРµ Р·РІРµРЅРѕ
 	};
 	Node* root;
 
-	void Del_Mem(Node*);//очистка памяти
-	void Add(T, Node*&);//добавление
-	void Delete(T, Node*&);//удаление
-	void Show(Node*); //вывод
-	bool Search(T, Node*);//поиск
-	void PreOrderTravers(vector<T>&, Node*);//Прямой обход бин дерева
-	void List(vector<T>&, Node*);//листья
+	void Del_Mem(Node*);//РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
+	void Add(T, Node*&);//РґРѕР±Р°РІР»РµРЅРёРµ
+	void Delete(T, Node*&);//СѓРґР°Р»РµРЅРёРµ
+	void Show(Node*); //РІС‹РІРѕРґ
+	bool Search(T, Node*);//РїРѕРёСЃРє
+	void PreOrderTravers(vector<T>&, Node*);//РџСЂСЏРјРѕР№ РѕР±С…РѕРґ Р±РёРЅ РґРµСЂРµРІР°
+	void List(vector<T>&, Node*);//Р»РёСЃС‚СЊСЏ
 
 public:
 	BinaryTree() { root = nullptr; }
@@ -44,7 +44,7 @@ public:
 
 template<class T>
 void BinaryTree<T>::Del_Mem(Node* root)
-{ //рекурсивная ф. прохода по поддеревьям
+{ //СЂРµРєСѓСЂСЃРёРІРЅР°СЏ С„. РїСЂРѕС…РѕРґР° РїРѕ РїРѕРґРґРµСЂРµРІСЊСЏРј
 	if (root)
 	{
 		Del_Mem(root->left);
@@ -54,10 +54,10 @@ void BinaryTree<T>::Del_Mem(Node* root)
 }
 
 template<class T>
-void BinaryTree<T>::Add(T x)//добавление
+void BinaryTree<T>::Add(T x)//РґРѕР±Р°РІР»РµРЅРёРµ
 {
 	if (!root)
-	{ //если первый элемент, выделяем память и инициализируем переменные
+	{ //РµСЃР»Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚, РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ
 		root = new Node;
 		root->data = x;
 	}
@@ -67,17 +67,17 @@ void BinaryTree<T>::Add(T x)//добавление
 template<class T>
 void BinaryTree<T>::Add(T x, Node*& root)
 {
-	if (x < root->data)   //если элемент меньше добавляем влево
+	if (x < root->data)   //РµСЃР»Рё СЌР»РµРјРµРЅС‚ РјРµРЅСЊС€Рµ РґРѕР±Р°РІР»СЏРµРј РІР»РµРІРѕ
 	{
-		if (root->left) Add(x, root->left); //если дочерние места заняты, то идем дальше
-		else          //Найдено место для элемента
+		if (root->left) Add(x, root->left); //РµСЃР»Рё РґРѕС‡РµСЂРЅРёРµ РјРµСЃС‚Р° Р·Р°РЅСЏС‚С‹, С‚Рѕ РёРґРµРј РґР°Р»СЊС€Рµ
+		else          //РќР°Р№РґРµРЅРѕ РјРµСЃС‚Рѕ РґР»СЏ СЌР»РµРјРµРЅС‚Р°
 		{
 			root->left = new Node;
 			root->left->data = x;
 		}
 	}
 
-	else if (x > root->data)//записываем вправо
+	else if (x > root->data)//Р·Р°РїРёСЃС‹РІР°РµРј РІРїСЂР°РІРѕ
 	{
 		if (root->right) Add(x, root->right);
 		else
@@ -98,22 +98,22 @@ void BinaryTree<T>::Delete(T x)
 template<class T>
 void BinaryTree<T>::Delete(T x, Node*& root)
 {
-	if (!root) throw "Error";//элемент не найден
-	if (x > root->data) Delete(x, root->right); // ищем элемент в правом поддереве
-	else if (x < root->data) Delete(x, root->left);//в левом
+	if (!root) throw "Error";//СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
+	if (x > root->data) Delete(x, root->right); // РёС‰РµРј СЌР»РµРјРµРЅС‚ РІ РїСЂР°РІРѕРј РїРѕРґРґРµСЂРµРІРµ
+	else if (x < root->data) Delete(x, root->left);//РІ Р»РµРІРѕРј
 	else {
 
-		if (root->right && !root->left) root = root->right;//при наличии 1 потомка ссылаемся на него
+		if (root->right && !root->left) root = root->right;//РїСЂРё РЅР°Р»РёС‡РёРё 1 РїРѕС‚РѕРјРєР° СЃСЃС‹Р»Р°РµРјСЃСЏ РЅР° РЅРµРіРѕ
 		else if (!root->right && root->left) root = root->left;
-		else if (root->right && root->left) {//два потомка
-			Node* d = root->right;//заменяем самым правым элементом левого поддерева
+		else if (root->right && root->left) {//РґРІР° РїРѕС‚РѕРјРєР°
+			Node* d = root->right;//Р·Р°РјРµРЅСЏРµРј СЃР°РјС‹Рј РїСЂР°РІС‹Рј СЌР»РµРјРµРЅС‚РѕРј Р»РµРІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
 			while (d->left)
 				d = d->left;
 			root->data = d->data;
-			Delete(d->data, root->right);//аналогичным способом удаляем  взятый на замену элемент
+			Delete(d->data, root->right);//Р°РЅР°Р»РѕРіРёС‡РЅС‹Рј СЃРїРѕСЃРѕР±РѕРј СѓРґР°Р»СЏРµРј  РІР·СЏС‚С‹Р№ РЅР° Р·Р°РјРµРЅСѓ СЌР»РµРјРµРЅС‚
 
 		}
-		else root = nullptr;//нет потомков
+		else root = nullptr;//РЅРµС‚ РїРѕС‚РѕРјРєРѕРІ
 	}
 }
 
@@ -126,7 +126,7 @@ void BinaryTree<T>::Print()
 template<class T>
 void BinaryTree<T>::Show(Node* root)
 {
-	if (root)//вывод слева направо
+	if (root)//РІС‹РІРѕРґ СЃР»РµРІР° РЅР°РїСЂР°РІРѕ
 	{
 		cout << root->data << " ";
 		Show(root->left);
@@ -138,10 +138,10 @@ void BinaryTree<T>::Show(Node* root)
 template<class T>
 bool BinaryTree<T>::Search(T x, Node* root)
 {
-	if (!root) return false;//узел пуст => элемент не найден
+	if (!root) return false;//СѓР·РµР» РїСѓСЃС‚ => СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
 	else if (root->data == x) return true;
-	else if (root->data > x) return Search(x, root->left);//поиск элемента слева
-	else return Search(x, root->right);//поиск элемента справа
+	else if (root->data > x) return Search(x, root->left);//РїРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° СЃР»РµРІР°
+	else return Search(x, root->right);//РїРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° СЃРїСЂР°РІР°
 }
 
 template<class T>
@@ -177,7 +177,7 @@ void BinaryTree<T>::PreOrderTravers(vector<T>& out, Node* root)
 template<class T>
 void BinaryTree<T>::List(vector<T>& out, Node* root)
 {
-	if (!root->left && !root->right)//если является листом
+	if (!root->left && !root->right)//РµСЃР»Рё СЏРІР»СЏРµС‚СЃСЏ Р»РёСЃС‚РѕРј
 		out.push_back(root->data);
 	else {
 		if (root->left) List(out, root->left);
